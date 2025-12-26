@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>for Tende ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body {
+    margin:0;
+    font-family: "Inter", sans-serif;
+    background: #fadce7;
+    color:#4a4a4a;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.nav {
+    width:100%;
+    background:#e8aabe;
+    padding:14px;
+    text-align:center;
+    font-size:20px;
+    font-weight:600;
+    color:#fff;
+    letter-spacing:1px;
+}
+.clock {
+    margin-top:15px;
+    font-size:16px;
+    font-weight:600;
+    color:#d16a8c;
+    align-self:flex-end;
+    margin-right:25px;
+}
+.tz {
+    font-size:12px;
+    font-weight:600;
+    color:#d16a8c;
+    text-align:right;
+    margin-right:25px;
+    margin-top:2px;
+}
+.container {
+    width:90%;
+    max-width:420px;
+    margin-top:20px;
+    animation:fade 1.4s ease-in-out;
+}
+.card {
+    background:#fff;
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.07);
+}
+h2 {
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:8px;
+    color:#d16a8c;
+}
+textarea, input {
+    width:100%;
+    border:1.8px solid #e8aabe;
+    border-radius:10px;
+    padding:10px;
+    font-size:13px;
+    outline:none;
+    background:#fcf6f8;
+}
+button {
+    width:100%;
+    margin-top:10px;
+    background:#d16a8c;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+button:hover {
+    transform:translateY(-2px);
+    opacity:0.88;
+}
+#displayMsg, #loveResult, #kittyText {
+    margin-top:12px;
+    font-size:15px;
+    font-weight:600;
+    color:#d16a8c;
+    text-align:center;
+}
+.hello-kitty {
+    width:120px;
+    display:block;
+    margin:auto;
+    filter:drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+}
+.hearts span {
+    position:fixed;
+    bottom:-40px;
+    font-size:22px;
+    opacity:0.4;
+    animation:float 6s linear infinite;
+}
+@keyframes float {
+    0%{ transform:translateY(0); opacity:0.4; }
+    100%{ transform:translateY(-100vh); opacity:0; }
+}
+@keyframes fade {
+    from{opacity:0;} to{opacity:1;}
+}
+</style>
+</head>
+<body>
+
+<div class="nav">hi Tende ♡</div>
+<div class="clock" id="clock"></div>
+<div class="tz">(Tende’s time zone 🌏 UTC +6)</div>
+
+<div class="container">
+
+<div class="card">
+<img class="hello-kitty" src="https://upload.wikimedia.org/wikipedia/en/0/05/Hello_kitty_character_portrait.png">
+<h2>made for you ♡</h2>
+<p style="font-size:13px;text-align:center;line-height:1.6;">
+    Nga choe luu gaa smmm.
+</p>
+</div>
+
+<div class="card">
+<h2>leave a message</h2>
+<textarea placeholder="write something…" id="msgBox"></textarea>
+<button onclick="showMsg()">send ♡</button>
+<div id="displayMsg"></div>
+</div>
+
+<div class="card">
+<h2>love meter</h2>
+<input type="text" placeholder="your name" id="name1">
+<input type="text" value="Tende" id="name2" disabled>
+<button onclick="calcLove()">calculate ♡</button>
+<div id="loveResult"></div>
+</div>
+
+<div class="card">
+<h2>a lil surprise</h2>
+<button onclick="kittySurprise()">open 🎀</button>
+<div id="kittyText"></div>
+</div>
+
+</div>
+
+<div class="hearts" id="hearts"></div>
+
+<script>
+function updateClock(){
+    let d = new Date().toLocaleTimeString("en-IN", {timeZone:"Asia/Thimphu"});
+    document.getElementById("clock").innerText = "⏰ " + d;
+}
+setInterval(updateClock,1000);
+updateClock();
+
+function showMsg(){
+    let text = document.getElementById("msgBox").value;
+    document.getElementById("displayMsg").innerText = "“" + text + "”";
+}
+
+function calcLove(){
+    let n1 = document.getElementById("name1").value;
+    if(!n1){
+        document.getElementById("loveResult").innerText = "type your name first ♡";
+        return;
+    }
+    let love = Math.floor(Math.random()*12) + 88;
+    document.getElementById("loveResult").innerText = `♡ ${love}% match`;
+}
+
+function kittySurprise(){
+    document.getElementById("kittyText").innerText = "have a great day ahead and lysmm 🐱♡";
+    let hearts = document.getElementById("hearts");
+    for(let i=0;i<8;i++){
+        let span = document.createElement("span");
+        span.innerText = "♡";
+        span.style.left = Math.random()*100 + "vw";
+        span.style.animationDuration = Math.random()*2 + 5 + "s";
+        hearts.appendChild(span);
+        setTimeout(()=>span.remove(),6000);
+    }
+}
+</script>
+
+</body>
+</html>
